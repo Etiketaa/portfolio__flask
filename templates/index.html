@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franco Paredes - Desarrollador Full Stack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="main-nav container">
+            <a href="#inicio" class="nav-logo">Franco Paredes</a>
+            <ul class="nav-menu">
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#acerca">Sobre mí</a></li>
+                <li><a href="#contacto" class="nav-cta">Hablemos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Convierto ideas en soluciones de software elegantes y funcionales.</h1>
+                <p class="hero-subtitle">Soy Franco Paredes, desarrollador Full Stack. Bienvenido a mi espacio digital donde la creatividad se encuentra con el código.</p>
+                <a href="#proyectos" class="cta-button">Ver mis proyectos</a>
+            </div>
+        </section>
+
+        <section id="proyectos" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Portafolio</span>
+                    <h2 class="section-title">Proyectos Recientes</h2>
+                </div>
+                <div class="projects-grid">
+                    <!-- Pomodoro Timer -->
+                    <div class="project-card">
+                        <img src="{{ url_for('static', filename='images/pomo-1.png') }}" alt="Preview del proyecto Pomodoro Timer">
+                        <div class="card-content">
+                            <h3 class="project-title">Pomodoro Timer Lofi</h3>
+                            <p class="project-description">Temporizador Pomodoro con tablero de tareas (To Do, In Progress, Done) y música lofi para mejorar la concentración.</p>
+                            <div class="project-links">
+                                <a href="https://pomodoro-timer-lofi.vercel.app/" target="_blank" class="project-link">Ver Deploy <i class="fas fa-external-link-alt"></i></a>
+                                <!-- Repositorio no disponible -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Proyecto 2 -->
+                    <div class="project-card">
+                        <img src="{{ url_for('static', filename='images/bit-house.png') }}" alt="Preview del proyecto Bit-House">
+                        <div class="card-content">
+                            <h3 class="project-title">Bit-House</h3>
+                            <p class="project-description">E-commerce de hardware con carrito de compras y filtro de productos, construido con React.</p>
+                            <div class="project-links">
+                                <a href="https://bit-house.vercel.app/" target="_blank" class="project-link">Ver Deploy <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/francoparedes/bit-house" target="_blank" class="project-link">Repositorio <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Proyecto 3 -->
+                    <div class="project-card">
+                        <img src="{{ url_for('static', filename='images/domus-tienda.png') }}" alt="Preview del proyecto Domus Tienda">
+                        <div class="card-content">
+                            <h3 class="project-title">Domus Tienda</h3>
+                            <p class="project-description">E-commerce de una tienda de muebles, enfocado en un diseño moderno y minimalista.</p>
+                            <div class="project-links">
+                                <a href="https://domus-tienda.vercel.app/" target="_blank" class="project-link">Ver Deploy <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/francoparedes/Domus-tienda" target="_blank" class="project-link">Repositorio <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Proyecto 4 -->
+                    <div class="project-card">
+                        <img src="{{ url_for('static', filename='images/up-catalogo.png') }}" alt="Preview del proyecto Up Catalogo">
+                        <div class="card-content">
+                            <h3 class="project-title">Up Catalogo</h3>
+                            <p class="project-description">Catálogo de productos digital para una empresa de venta de suplementos deportivos.</p>
+                            <div class="project-links">
+                                <a href="https://up-catalogo.vercel.app/" target="_blank" class="project-link">Ver Deploy <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/francoparedes/Up-catalogo" target="_blank" class="project-link">Repositorio <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Servicios</span>
+                    <h2 class="section-title">Lo que ofrezco</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-code"></i>
+                        <h3>Desarrollo Web Full-Stack</h3>
+                        <p>Creación de aplicaciones web completas, desde la base de datos hasta la interfaz de usuario, utilizando tecnologías modernas y eficientes.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Diseño Responsivo</h3>
+                        <p>Garantizo que tu sitio web se adapte y funcione a la perfección en cualquier dispositivo, ofreciendo una experiencia de usuario consistente.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Optimización y Mantenimiento</h3>
+                        <p>Mejora del rendimiento de sitios existentes, actualización de tecnologías y mantenimiento continuo para asegurar su estabilidad y seguridad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="acerca" class="about-section">
+            <div class="container about-container">
+                <div class="about-content">
+                    <span class="section-tag">Sobre Mí</span>
+                    <h2 class="section-title">Apasionado por la tecnología y la resolución de problemas.</h2>
+                    <p>Soy un desarrollador de software con un fuerte enfoque en la creación de productos digitales de alta calidad. Mi experiencia abarca desde el desarrollo frontend con herramientas como React, hasta la construcción de APIs robustas con Python y Node.js. Disfruto aprendiendo nuevas tecnologías y aplicándolas para construir soluciones eficientes y escalables.</p>
+                    <div class="skills-list">
+                        <h4>Skills Principales:</h4>
+                        <ul>
+                            <li>HTML5 & CSS3</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>React</li>
+                            <li>Python (Flask)</li>
+                            <li>PHP</li>
+                            <li>Laravel</li>
+                            <li>Bases de Datos</li>
+                            <li>Node.js</li>
+                            <li>SQL (MySQL)</li>
+                            <li>Git & GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://media.licdn.com/dms/image/D4D03AQG42W2x_c22XA/profile-displayphoto-shrink_800_800/0/1719344323528?e=1725494400&v=beta&t=j5yHh8Yj3k6f_gZ2bX-3bA9Q8Yw4cW2Z-X9YwJ7jYwE" alt="Foto de Franco Paredes">
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Contacto</span>
+                    <h2 class="section-title">¿Tienes un proyecto en mente?</h2>
+                    <p>Me encantaría escucharlo. Envíame un mensaje y comencemos a construir algo increíble juntos.</p>
+                </div>
+                <div class="contact-wrapper">
+                    <form id="contact-form" action="https://formspree.io/f/mleqgjdr" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Enviar Mensaje</button>
+                        <p id="form-status"></p>
+                    </form>
+                    <div class="contact-info">
+                        <h3>O encuéntrame en:</h3>
+                        <a href="https://www.linkedin.com/in/francoparedes1992/" target="_blank" class="contact-social-link">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/francoparedes" target="_blank" class="contact-social-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="{{ url_for('static', filename='cv-programador_20250114_002438_0000_compressed-1.pdf') }}" target="_blank" class="contact-social-link">
+                            <i class="fas fa-file-pdf"></i> Descargar CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Franco Paredes. Diseñado y construido con <i class="fas fa-heart"></i>.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
