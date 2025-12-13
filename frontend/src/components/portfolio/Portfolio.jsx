@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faJs, faPhp, faLaravel, faPython, faSymfony, faHtml5, faCss3, faNodeJs, faGitAlt } from '@fortawesome/free-brands-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import userPhoto from '../../assets/images/foto-portfolio.png';
+import WhatsAppButton from '../common/WhatsAppButton';
+import AnimatedSection from '../common/AnimatedSection';
 
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -81,6 +83,14 @@ export default function Portfolio() {
     }
   ];
 
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+
+  const handleFormChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const mailtoLink = `mailto:francoparedes1992@gmail.com?subject=Contacto desde el portfolio&body=Nombre: ${form.name}%0D%0AEmail: ${form.email}%0D%0AMensaje: ${form.message}`;
+
   return (
     <div className="bg-black text-white overflow-x-hidden">
       {/* Animated Background */}
@@ -129,223 +139,239 @@ export default function Portfolio() {
 
       {/* Hero Section */}
       <section id="inicio" className="relative min-h-screen flex items-center justify-center px-4 pt-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-center lg:text-left relative z-10">
-          <div className="order-2 lg:order-1">
-            <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
-              <Sparkles className="text-cyan-400" size={16} />
-              <span className="text-cyan-400 font-bold text-sm">Desarrollador Full Stack Disponible</span>
+        <AnimatedSection delay={0}>
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-center lg:text-left relative z-10">
+            <div className="order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
+                <Sparkles className="text-cyan-400" size={16} />
+                <span className="text-cyan-400 font-bold text-sm">Desarrollador Full Stack Disponible</span>
+              </div>
+
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight">
+                CONSTRUYO<br />
+                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                  APLICACIONES
+                </span><br />
+                QUE ESCALAN
+              </h1>
+
+              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                2 años transformando ideas en productos digitales de alto rendimiento con <span className="text-cyan-400 font-bold">React, Laravel, Symfony y Python</span>
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
+                <a href="#proyectos" className="group bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all hover:scale-105 flex items-center gap-2">
+                  VER PROYECTOS
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20}/>
+                </a>
+                <a href="#contacto" className="border-2 border-cyan-500 px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-500/10 transition-all hover:scale-105">
+                  HABLEMOS
+                </a>
+              </div>
+
+              <div className="flex justify-center lg:justify-start gap-6">
+                <a href="https://github.com/Etiketaa" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors transform hover:scale-110">
+                  <Github size={32} />
+                </a>
+                <a href="https://www.linkedin.com/in/francoparedes1992/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors transform hover:scale-110">
+                  <Linkedin size={32} />
+                </a>
+                <a href="mailto:francoparedes1992@gmail.com" className="hover:text-cyan-400 transition-colors transform hover:scale-110">
+                  <Mail size={32} />
+                </a>
+              </div>
             </div>
-
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight">
-              CONSTRUYO<br />
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                APLICACIONES
-              </span><br />
-              QUE ESCALAN
-            </h1>
-
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-              2 años transformando ideas en productos digitales de alto rendimiento con <span className="text-cyan-400 font-bold">React, Laravel, Symfony y Python</span>
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
-              <a href="#proyectos" className="group bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all hover:scale-105 flex items-center gap-2">
-                VER PROYECTOS
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20}/>
-              </a>
-              <a href="#contacto" className="border-2 border-cyan-500 px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-500/10 transition-all hover:scale-105">
-                HABLEMOS
-              </a>
-            </div>
-
-            <div className="flex justify-center lg:justify-start gap-6">
-              <a href="https://github.com/Etiketaa" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors transform hover:scale-110">
-                <Github size={32} />
-              </a>
-              <a href="https://www.linkedin.com/in/francoparedes1992/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors transform hover:scale-110">
-                <Linkedin size={32} />
-              </a>
-              <a href="mailto:francoparedes1992@gmail.com" className="hover:text-cyan-400 transition-colors transform hover:scale-110">
-                <Mail size={32} />
-              </a>
+            <div className="order-1 lg:order-2 flex justify-center">
+              <img src={userPhoto} alt="Franco Paredes" className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-cyan-500/50 shadow-lg shadow-cyan-500/20" />
             </div>
           </div>
-          <div className="order-1 lg:order-2 flex justify-center">
-            <img src={userPhoto} alt="Franco Paredes" className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-cyan-500/50 shadow-lg shadow-cyan-500/20" />
-          </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Skills Section */}
       <section id="habilidades" className="relative py-24 px-4">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-4">
-              MIS <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">SUPERPODERES</span>
-            </h2>
-            <p className="text-lg md:text-xl text-gray-400">Tecnologías con las que desarrollo soluciones profesionales</p>
-          </div>
+        <AnimatedSection delay={200}>
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-black mb-4">
+                MIS <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">SUPERPODERES</span>
+              </h2>
+              <p className="text-lg md:text-xl text-gray-400">Tecnologías con las que desarrollo soluciones profesionales</p>
+            </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-            {skills.map((skill, idx) => (
-              <div key={idx} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity"></div>
-                <div className="relative bg-gray-900/50 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 hover:border-cyan-500 transition-all h-full">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="text-4xl md:text-5xl mb-4">{skill.icon}</div>
-                    <div>
-                      <h3 className="text-xl md:text-2xl font-bold">{skill.name}</h3>
-                      <div className="text-cyan-400 font-semibold text-base">{skill.level}%</div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+              {skills.map((skill, idx) => (
+                <div key={idx} className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                  <div className="relative bg-gray-900/50 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 hover:border-cyan-500 transition-all h-full">
+                    <div className="flex flex-col items-center text-center">
+                      <div className="text-4xl md:text-5xl mb-4">{skill.icon}</div>
+                      <div>
+                        <h3 className="text-xl md:text-2xl font-bold">{skill.name}</h3>
+                        <div className="text-cyan-400 font-semibold text-base">{skill.level}%</div>
+                      </div>
+                    </div>
+                    <div className="w-full bg-gray-800 rounded-full h-2 mt-4 overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full transition-all duration-1000"
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
                     </div>
                   </div>
-                  <div className="w-full bg-gray-800 rounded-full h-2 mt-4 overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full transition-all duration-1000"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
-                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Projects Section */}
       <section id="proyectos" className="relative py-24 px-4 bg-gradient-to-b from-black to-gray-900">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-4">
-              PROYECTOS QUE <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">GENERAN IMPACTO</span>
-            </h2>
-            <p className="text-lg md:text-xl text-gray-400">Resultados medibles, código escalable</p>
-          </div>
+        <AnimatedSection delay={400}>
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-black mb-4">
+                PROYECTOS QUE <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">GENERAN IMPACTO</span>
+              </h2>
+              <p className="text-lg md:text-xl text-gray-400">Resultados medibles, código escalable</p>
+            </div>
 
-          <div className="space-y-12">
-            {projects.map((project, idx) => (
-              <div key={idx} className="group relative">
-                <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity"></div>
-                <div className="relative bg-gray-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 md:p-8 hover:border-cyan-500 transition-all">
-                  <div className="flex flex-col md:flex-row items-start gap-6">
-                    <div className="text-5xl md:text-6xl">{project.emoji}</div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl md:text-3xl font-bold mb-3">{project.title}</h3>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tech.map((tech, i) => (
-                          <span key={i} className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full font-semibold text-sm border border-cyan-500/30">
-                            {tech}
-                          </span>
-                        ))}
+            <div className="space-y-12">
+              {projects.map((project, idx) => (
+                <div key={idx} className="group relative">
+                  <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                  <div className="relative bg-gray-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 md:p-8 hover:border-cyan-500 transition-all">
+                    <div className="flex flex-col md:flex-row items-start gap-6">
+                      <div className="text-5xl md:text-6xl">{project.emoji}</div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-3">{project.title}</h3>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.tech.map((tech, i) => (
+                            <span key={i} className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full font-semibold text-sm border border-cyan-500/30">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex flex-wrap gap-x-4 gap-y-2 items-center">
+                          {project.deploy && <a href={project.deploy} target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-bold hover:underline text-sm">Ver Demo</a>}
+                          {project.repo && <a href={project.repo} target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-bold hover:underline text-sm">Repositorio</a>}
+                          {project.credentials && (
+                            <div className="text-xs text-gray-400">
+                              <p>User: {project.credentials.user} / Pass: {project.credentials.pass}</p>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                      <div className="flex flex-wrap gap-x-4 gap-y-2 items-center">
-                        {project.deploy && <a href={project.deploy} target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-bold hover:underline text-sm">Ver Demo</a>}
-                        {project.repo && <a href={project.repo} target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-bold hover:underline text-sm">Repositorio</a>}
-                        {project.credentials && (
-                          <div className="text-xs text-gray-400">
-                            <p>User: {project.credentials.user} / Pass: {project.credentials.pass}</p>
-                          </div>
-                        )}
+                      <div className="text-left md:text-right mt-4 md:mt-0">
+                        <div className="text-xl md:text-2xl font-bold text-cyan-400 mb-1">{project.impact}</div>
+                        <div className="text-base md:text-lg text-gray-400">{project.metric}</div>
                       </div>
-                    </div>
-                    <div className="text-left md:text-right mt-4 md:mt-0">
-                      <div className="text-xl md:text-2xl font-bold text-cyan-400 mb-1">{project.impact}</div>
-                      <div className="text-base md:text-lg text-gray-400">{project.metric}</div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Why Work With Me */}
       <section className="relative py-24 px-4">
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-4">
-              ¿POR QUÉ <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">TRABAJAR CONMIGO?</span>
-            </h2>
-          </div>
+        <AnimatedSection delay={600}>
+          <div className="max-w-5xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-black mb-4">
+                ¿POR QUÉ <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">TRABAJAR CONMIGO?</span>
+              </h2>
+            </div>
 
-          <div className="space-y-4">
-            {[
-              'Código limpio y escalable que otros desarrolladores entienden',
-              'Comunicación constante - sin sorpresas de último minuto',
-              'Experiencia con proyectos reales de producción',
-              'Dominio de tecnologías modernas del mercado',
-              'Entregas a tiempo, siempre'
-            ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-4 bg-gray-900/50 backdrop-blur-sm border border-cyan-500/30 rounded-xl p-4 md:p-6 hover:border-cyan-500 transition-all">
-                <CheckCircle2 className="text-cyan-400 flex-shrink-0 mt-1" size={24} />
-                <span className="text-base md:text-lg font-semibold">{item}</span>
-              </div>
-            ))}
+            <div className="space-y-4">
+              {[
+                'Código limpio y escalable que otros desarrolladores entienden',
+                'Comunicación constante - sin sorpresas de último minuto',
+                'Experiencia con proyectos reales de producción',
+                'Dominio de tecnologías modernas del mercado',
+                'Entregas a tiempo, siempre'
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start gap-4 bg-gray-900/50 backdrop-blur-sm border border-cyan-500/30 rounded-xl p-4 md:p-6 hover:border-cyan-500 transition-all">
+                  <CheckCircle2 className="text-cyan-400 flex-shrink-0 mt-1" size={24} />
+                  <span className="text-base md:text-lg font-semibold">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Contact Section */}
       <section id="contacto" className="relative py-24 px-4 bg-gradient-to-b from-gray-900 to-black">
-        <div className="max-w-4xl mx-auto relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
-            <Rocket className="text-cyan-400" size={16} />
-            <span className="text-cyan-400 font-bold text-sm">Disponible para nuevos proyectos</span>
-          </div>
-
-          <h2 className="text-4xl md:text-6xl font-black mb-4">
-            ¿TIENES UN <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">PROYECTO</span> EN MENTE?
-          </h2>
-
-          <p className="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
-            Convirtamos tu idea en realidad
-          </p>
-
-          <form action="https://formspree.io/f/mleqgjdr" method="POST" className="bg-gray-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 md:p-8">
-            <div className="space-y-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Tu nombre"
-                className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-cyan-500 transition-colors"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Tu email"
-                className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-cyan-500 transition-colors"
-                required
-              />
-              <textarea
-                rows="5"
-                name="message"
-                placeholder="Cuéntame sobre tu proyecto..."
-                className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-cyan-500 transition-colors resize-none"
-                required
-              ></textarea>
-              <button 
-                type="submit"
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
-              >
-                ENVIAR MENSAJE
-                <Zap size={20}/>
-              </button>
+        <AnimatedSection delay={800}>
+          <div className="max-w-4xl mx-auto relative z-10 text-center">
+            <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
+              <Rocket className="text-cyan-400" size={16} />
+              <span className="text-cyan-400 font-bold text-sm">Disponible para nuevos proyectos</span>
             </div>
-          </form>
 
-          <div className="mt-12 flex justify-center gap-6">
-            <a href="https://github.com/Etiketaa" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">
-              <Github size={32} />
-            </a>
-            <a href="https://www.linkedin.com/in/francoparedes1992/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">
-              <Linkedin size={32} />
-            </a>
-            <a href="mailto:francoparedes1992@gmail.com" className="hover:text-cyan-400 transition-colors">
-              <Mail size={32} />
-            </a>
+            <h2 className="text-4xl md:text-6xl font-black mb-4">
+              ¿TIENES UN <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">PROYECTO</span> EN MENTE?
+            </h2>
+
+            <p className="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
+              Convirtamos tu idea en realidad
+            </p>
+
+            <div className="bg-gray-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 md:p-8">
+              <div className="space-y-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Tu nombre"
+                  className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-cyan-500 transition-colors"
+                  value={form.name}
+                  onChange={handleFormChange}
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Tu email"
+                  className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-cyan-500 transition-colors"
+                  value={form.email}
+                  onChange={handleFormChange}
+                  required
+                />
+                <textarea
+                  rows="5"
+                  name="message"
+                  placeholder="Cuéntame sobre tu proyecto..."
+                  className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-cyan-500 transition-colors resize-none"
+                  value={form.message}
+                  onChange={handleFormChange}
+                  required
+                ></textarea>
+                <a
+                  href={mailtoLink}
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
+                >
+                  ENVIAR MENSAJE
+                  <Zap size={20}/>
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-12 flex justify-center gap-6">
+              <a href="https://github.com/Etiketaa" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">
+                <Github size={32} />
+              </a>
+              <a href="https://www.linkedin.com/in/francoparedes1992/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">
+                <Linkedin size={32} />
+              </a>
+              <a href="mailto:francoparedes1992@gmail.com" className="hover:text-cyan-400 transition-colors">
+                <Mail size={32} />
+              </a>
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Footer */}
@@ -354,6 +380,7 @@ export default function Portfolio() {
           <p className="text-gray-500 text-lg">© 2024 Franco Paredes • Full Stack Developer • Hecho con React + Tailwind</p>
         </div>
       </footer>
+      <WhatsAppButton />
     </div>
   );
 }
