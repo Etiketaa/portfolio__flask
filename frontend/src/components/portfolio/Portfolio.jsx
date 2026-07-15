@@ -19,19 +19,49 @@ export default function Portfolio() {
 
   const skills = [
     { name: 'React', icon: <FontAwesomeIcon icon={faReact} />, level: 95 },
+    { name: 'Next.js', icon: <FontAwesomeIcon icon={faReact} />, level: 92 },
     { name: 'JavaScript', icon: <FontAwesomeIcon icon={faJs} />, level: 94 },
+    { name: 'TypeScript', icon: <FontAwesomeIcon icon={faJs} />, level: 88 },
     { name: 'PHP', icon: <FontAwesomeIcon icon={faPhp} />, level: 92 },
     { name: 'Laravel', icon: <FontAwesomeIcon icon={faLaravel} />, level: 90 },
     { name: 'Python', icon: <FontAwesomeIcon icon={faPython} />, level: 88 },
     { name: 'Symfony', icon: <FontAwesomeIcon icon={faSymfony} />, level: 85 },
+    { name: 'Node.js', icon: <FontAwesomeIcon icon={faNodeJs} />, level: 85 },
     { name: 'HTML5', icon: <FontAwesomeIcon icon={faHtml5} />, level: 95 },
     { name: 'CSS3', icon: <FontAwesomeIcon icon={faCss3} />, level: 95 },
-    { name: 'Node.js', icon: <FontAwesomeIcon icon={faNodeJs} />, level: 80 },
+    { name: 'Supabase', icon: <FontAwesomeIcon icon={faDatabase} />, level: 90 },
     { name: 'SQL', icon: <FontAwesomeIcon icon={faDatabase} />, level: 80 },
     { name: 'Git & GitHub', icon: <FontAwesomeIcon icon={faGitAlt} />, level: 90 },
   ];
 
   const projects = [
+    {
+      title: 'Fullshine Detailing - App de Gestión de Turnos',
+      impact: 'Sistema completo de turnos para detailings',
+      tech: ['Next.js', 'React', 'Supabase', 'TypeScript', 'Tailwind CSS'],
+      metric: 'App fullstack con autenticación y base de datos',
+      emoji: '🚗',
+      deploy: 'https://fullshine-turnero.vercel.app',
+      repo: ''
+    },
+    {
+      title: 'UpStudio - Turnero SaaS',
+      impact: 'Plataforma de turnos para estudios',
+      tech: ['Next.js', 'React', 'Supabase', 'TypeScript', 'Zod'],
+      metric: 'Sistema multi-tenant escalable',
+      emoji: '📅',
+      deploy: 'https://upestudio.vercel.app',
+      repo: ''
+    },
+    {
+      title: 'Oz Gym - Turnero Fitness',
+      impact: 'App de turnos para gimnasios con gráficos',
+      tech: ['React', 'Vite', 'Supabase', 'Framer Motion', 'Recharts'],
+      metric: 'Dashboard interactivo con métricas en tiempo real',
+      emoji: '💪',
+      deploy: 'https://ozgym.vercel.app',
+      repo: ''
+    },
     {
       title: 'Gestor Flask - Dashboard de Administración',
       impact: 'Gestión de datos con Firebase',
@@ -144,7 +174,7 @@ export default function Portfolio() {
             <div className="order-2 lg:order-1">
               <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
                 <Sparkles className="text-cyan-400" size={16} />
-                <span className="text-cyan-400 font-bold text-sm">Desarrollador Full Stack Disponible</span>
+                <span className="text-cyan-400 font-bold text-sm">Full Stack Developer • 2+ años de experiencia</span>
               </div>
 
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight">
@@ -156,7 +186,7 @@ export default function Portfolio() {
               </h1>
 
               <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-                2 años transformando ideas en productos digitales de alto rendimiento con <span className="text-cyan-400 font-bold">React, Laravel, Symfony y Python</span>
+                +2 años transformando ideas en productos digitales de alto rendimiento con <span className="text-cyan-400 font-bold">React, Next.js, Laravel, Symfony, Python y Supabase</span>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
@@ -287,11 +317,11 @@ export default function Portfolio() {
 
             <div className="space-y-4">
               {[
-                'Código limpio y escalable que otros desarrolladores entienden',
-                'Comunicación constante - sin sorpresas de último minuto',
-                'Experiencia con proyectos reales de producción',
-                'Dominio de tecnologías modernas del mercado',
-                'Entregas a tiempo, siempre'
+                'Full Stack con experiencia en React, Next.js, Laravel, Symfony y Python',
+                'Bases de datos modernas: Supabase, Firebase, SQL',
+                'Interfaces responsivas y animaciones con Tailwind CSS y Framer Motion',
+                'Autenticación, APIs REST y arquitectura escalable',
+                'Despliegue continuo en Vercel y optimización de rendimiento'
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-4 bg-gray-900/50 backdrop-blur-sm border border-cyan-500/30 rounded-xl p-4 md:p-6 hover:border-cyan-500 transition-all">
                   <CheckCircle2 className="text-cyan-400 flex-shrink-0 mt-1" size={24} />
@@ -377,7 +407,7 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="relative py-12 px-6 border-t border-cyan-500/20">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-500 text-lg">© 2024 Franco Paredes • Full Stack Developer • Hecho con React + Tailwind</p>
+          <p className="text-gray-500 text-lg">© 2026 Franco Paredes • Full Stack Developer • Hecho con React + Tailwind</p>
         </div>
       </footer>
       <WhatsAppButton />
