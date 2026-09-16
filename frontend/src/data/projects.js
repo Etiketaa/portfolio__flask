@@ -82,5 +82,15 @@ export const projects = [
     emoji: '🛒',
     deploy: 'https://oudeonline.site',
     repo: ''
+  },
+  {
+    id: 'vas',
+    title: 'VAS Centro de Estética - Landing + Reservas',
+    impact: 'Landing page con sistema de turnos y panel admin',
+    tech: ['Node.js', 'Express', 'Supabase', 'Resend', 'Vercel'],
+    metric: 'Sistema completo con emails automáticos',
+    emoji: '💅',
+    deploy: 'https://vas-centro.vercel.app',
+    repo: 'https://github.com/Etiketaa/landing-vas'
   }
 ];
