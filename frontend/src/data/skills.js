@@ -1,9 +1,9 @@
-import { faReact, faJs, faPhp, faLaravel, faPython, faSymfony, faHtml5, faCss3, faNodeJs, faGitAlt, faNextJs } from '@fortawesome/free-brands-svg-icons';
+import { faReact, faJs, faPhp, faLaravel, faPython, faSymfony, faHtml5, faCss3, faNodeJs, faGitAlt, faNextjs } from '@fortawesome/free-brands-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 
 export const skills = [
   { name: 'React', icon: faReact, level: 95 },
-  { name: 'Next.js', icon: faNextJs, level: 92 },
+  { name: 'Next.js', icon: faNextjs, level: 92 },
   { name: 'JavaScript', icon: faJs, level: 94 },
   { name: 'TypeScript', icon: faJs, level: 88 },
   { name: 'PHP', icon: faPhp, level: 92 },
