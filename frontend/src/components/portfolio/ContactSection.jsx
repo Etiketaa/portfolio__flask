@@ -1,162 +1,142 @@
-import { useState } from 'react';
-import { Github, Linkedin, Mail, Rocket, Zap, CheckCircle } from 'lucide-react';
-import AnimatedSection from '../common/AnimatedSection';
+import { useState } from "react";
+import { CheckCircle2, Github, Linkedin, Mail, Send } from "lucide-react";
+import AnimatedSection from "../common/AnimatedSection";
+import { Button } from "../ui/Button";
+import { Input } from "../ui/Input";
+import { Textarea } from "../ui/Textarea";
+
+const email = "francoparedes1992@gmail.com";
+
+const contactLinks = [
+  { href: "https://github.com/Etiketaa", label: "GitHub", icon: Github },
+  { href: "https://www.linkedin.com/in/francoparedes1992/", label: "LinkedIn", icon: Linkedin },
+  { href: `mailto:${email}`, label: email, icon: Mail },
+];
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleFormChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    const mailtoLink = `mailto:francoparedes1992@gmail.com?subject=Contacto desde el portfolio - ${form.name}&body=Nombre: ${form.name}%0D%0AEmail: ${form.email}%0D%0AMensaje: ${form.message}`;
-
-    window.location.href = mailtoLink;
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setForm({ name: '', email: '', message: '' });
-
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1000);
+    const subject = encodeURIComponent(`Contacto portfolio — ${form.name}`);
+    const body = encodeURIComponent(
+      `Nombre: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+    );
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    setIsSubmitted(true);
+    setForm({ name: "", email: "", message: "" });
+    setTimeout(() => setIsSubmitted(false), 6000);
   };
 
-  const isFormValid = form.name && form.email && form.message;
+  const isValid = form.name.trim() && form.email.trim() && form.message.trim();
 
   return (
-    <section id="contacto" className="relative py-24 px-4 bg-gradient-to-b from-gray-900 to-black">
-      <AnimatedSection delay={800}>
-        <div className="max-w-4xl mx-auto relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
-            <Rocket className="text-cyan-400" size={16} aria-hidden="true" />
-            <span className="text-cyan-400 font-bold text-sm">Disponible para nuevos proyectos</span>
-          </div>
+    <section id="contacto" className="section bg-surface">
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <AnimatedSection delay={0}>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-brand-500 mb-3">
+                Contacto
+              </p>
+              <h2 className="section-title">
+                ¿Tenés un proyecto{" "}
+                <span className="bg-gradient-to-r from-brand-400 to-accent-500 bg-clip-text text-transparent">
+                  en mente?
+                </span>
+              </h2>
+              <p className="section-subtitle">
+                Contame qué necesitás y te respondo con un plan concreto: alcance, stack y
+                próximos pasos. Sin vueltas.
+              </p>
 
-          <h2 className="text-4xl md:text-6xl font-black mb-4">
-            ¿TIENES UN{' '}
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-              PROYECTO
-            </span>{' '}
-            EN MENTE?
-          </h2>
-
-          <p className="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">Convirtamos tu idea en realidad</p>
-
-          <div className="bg-gray-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 md:p-8">
-            {isSubmitted ? (
-              <div className="flex flex-col items-center gap-4 py-8">
-                <CheckCircle className="text-green-500" size={64} />
-                <h3 className="text-2xl font-bold text-green-400">¡Mensaje listo!</h3>
-                <p className="text-gray-400">Se abrió tu cliente de correo. ¡No olvides enviarlo!</p>
+<div className="mt-8 space-y-3">
+                {contactLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="flex items-center gap-3 rounded-xl border border-line bg-canvas p-4 text-content-muted hover:text-content hover:border-brand-500 transition-colors duration-200"
+                    >
+                      <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center">
+                        <Icon size={18} aria-hidden="true" />
+                      </span>
+                      <span className="font-medium text-sm">{link.label}</span>
+                    </a>
+                  );
+                })}
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="sr-only">
-                    Tu nombre
-                  </label>
-                  <input
-                    type="text"
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={150}>
+            <div className="rounded-2xl border border-line bg-canvas p-6 md:p-8">
+              {isSubmitted ? (
+                <div className="flex flex-col items-center text-center gap-4 py-12">
+                  <span className="flex items-center justify-center w-16 h-16 rounded-full bg-success-500/10 text-success-500">
+                    <CheckCircle2 size={36} aria-hidden="true" />
+                  </span>
+                  <h3 className="text-xl font-bold text-content">¡Todo listo!</h3>
+                  <p className="text-content-muted text-sm max-w-xs">
+                    Se abrió tu cliente de correo con el mensaje preparado. Solo falta que lo
+                    envíes.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                  <Input
+                    label="Nombre"
                     id="name"
                     name="name"
                     placeholder="Tu nombre"
-                    className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 transition-all"
                     value={form.name}
-                    onChange={handleFormChange}
-                    required
+                    onChange={handleChange}
                     autoComplete="name"
+                    required
                   />
-                </div>
-                <div>
-                  <label htmlFor="email" className="sr-only">
-                    Tu email
-                  </label>
-                  <input
-                    type="email"
+                  <Input
+                    label="Email"
                     id="email"
                     name="email"
-                    placeholder="Tu email"
-                    className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 transition-all"
+                    type="email"
+                    placeholder="tu@email.com"
                     value={form.email}
-                    onChange={handleFormChange}
-                    required
+                    onChange={handleChange}
                     autoComplete="email"
+                    required
                   />
-                </div>
-                <div>
-                  <label htmlFor="message" className="sr-only">
-                    Tu mensaje
-                  </label>
-                  <textarea
-                    rows="5"
+                  <Textarea
+                    label="Mensaje"
                     id="message"
                     name="message"
-                    placeholder="Cuéntame sobre tu proyecto..."
-                    className="w-full bg-black/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 transition-all resize-none"
+                    placeholder="Contame sobre tu proyecto: objetivo, plazo y presupuesto estimado…"
                     value={form.message}
-                    onChange={handleFormChange}
+                    onChange={handleChange}
                     required
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  disabled={!isFormValid || isSubmitting}
-                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 ${
-                    isFormValid && !isSubmitting
-                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-[1.02]'
-                      : 'bg-gray-700 cursor-not-allowed'
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="animate-spin">⟳</span> Preparando...
-                    </>
-                  ) : (
-                    <>
-                      ENVIAR MENSAJE <Zap size={20} />
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
-
-          <div className="mt-12 flex justify-center gap-6">
-            <a
-              href="https://github.com/Etiketaa"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black rounded"
-              aria-label="GitHub de Franco Paredes"
-            >
-              <Github size={32} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/francoparedes1992/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black rounded"
-              aria-label="LinkedIn de Franco Paredes"
-            >
-              <Linkedin size={32} />
-            </a>
-            <a
-              href="mailto:francoparedes1992@gmail.com"
-              className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black rounded"
-              aria-label="Enviar email a Franco Paredes"
-            >
-              <Mail size={32} />
-            </a>
-          </div>
+                  />
+                  <Button
+                    type="submit"
+                    size="lg"
+                    fullWidth
+                    disabled={!isValid}
+                    rightIcon={<Send size={18} />}
+                  >
+                    Enviar mensaje
+                  </Button>
+                </form>
+              )}
+            </div>
+          </AnimatedSection>
         </div>
-      </AnimatedSection>
+      </div>
     </section>
   );
 }

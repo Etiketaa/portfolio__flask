@@ -1,41 +1,77 @@
-import { CheckCircle2 } from 'lucide-react';
-import AnimatedSection from '../common/AnimatedSection';
+import { Code2, Database, Gauge, Layers, ShieldCheck } from "lucide-react";
+import AnimatedSection from "../common/AnimatedSection";
 
 const reasons = [
-  'Full Stack con experiencia en React, Next.js, Laravel, Symfony y Python',
-  'Bases de datos modernas: Supabase, Firebase, SQL',
-  'Interfaces responsivas y animaciones con Tailwind CSS y Framer Motion',
-  'Autenticación, APIs REST y arquitectura escalable',
-  'Despliegue continuo en Vercel y optimización de rendimiento'
+  {
+    icon: Layers,
+    title: "Full-stack de verdad",
+    description:
+      "Frontend, backend, base de datos y deploy. Un solo responsable de punta a punta, sin traspasos que se pierden.",
+  },
+  {
+    icon: Database,
+    title: "Modelo de datos primero",
+    description:
+      "Diseño las entidades y las reglas antes de programar. Un buen modelo evita meses de parches.",
+  },
+  {
+    icon: Gauge,
+    title: "Foco en rendimiento",
+    description:
+      "Interfaces rápidas, queries eficientes y payloads mínimos. La velocidad es parte de la experiencia.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Seguridad por diseño",
+    description:
+      "RLS, validación en backend y aislamiento por usuario verificado. Los datos se protegen a nivel de fila.",
+  },
+  {
+    icon: Code2,
+    title: "Código mantenible",
+    description:
+      "Arquitectura en capas, tipado estricto y decisiones documentadas. Pensado para que el próximo dev no sufra.",
+  },
 ];
 
 export default function WhyWorkWithMe() {
   return (
-    <section className="relative py-24 px-4">
-      <AnimatedSection delay={600}>
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-4">
-              ¿POR QUÉ{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                TRABAJAR CONMIGO?
+    <section id="porque" className="section">
+      <div className="container">
+        <AnimatedSection delay={0}>
+          <div className="max-w-2xl mb-14">
+            <p className="text-sm font-semibold uppercase tracking-widest text-brand-500 mb-3">
+              Diferencial
+            </p>
+            <h2 className="section-title">
+              Por qué trabajar{" "}
+              <span className="bg-gradient-to-r from-brand-400 to-accent-500 bg-clip-text text-transparent">
+                conmigo
               </span>
             </h2>
+            <p className="section-subtitle">
+              No entrego solo pantallas: entrego sistemas que se sostienen en el tiempo.
+            </p>
           </div>
+        </AnimatedSection>
 
-          <div className="space-y-4">
-            {reasons.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex items-start gap-4 bg-gray-900/50 backdrop-blur-sm border border-cyan-500/30 rounded-xl p-4 md:p-6 hover:border-cyan-500 transition-all"
-              >
-                <CheckCircle2 className="text-cyan-400 flex-shrink-0 mt-1" size={24} aria-hidden="true" />
-                <span className="text-base md:text-lg font-semibold">{item}</span>
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {reasons.map((reason, idx) => {
+            const Icon = reason.icon;
+            return (
+              <AnimatedSection key={reason.title} delay={idx * 80}>
+                <article className="h-full rounded-2xl border border-line bg-surface p-6 transition-all duration-300 hover:border-brand-500 hover:-translate-y-1">
+                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 mb-5">
+                    <Icon size={22} aria-hidden="true" />
+                  </span>
+                  <h3 className="text-lg font-bold text-content mb-2">{reason.title}</h3>
+                  <p className="text-sm text-content-muted leading-relaxed">{reason.description}</p>
+                </article>
+              </AnimatedSection>
+            );
+          })}
         </div>
-      </AnimatedSection>
+      </div>
     </section>
   );
 }

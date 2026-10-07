@@ -1,106 +1,137 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { Menu, X, Code2 } from "lucide-react";
+import ThemeToggle from "../common/ThemeToggle";
+import { Button } from "../ui/Button";
+
+const navLinks = [
+  { href: "#inicio", label: "Inicio", id: "inicio" },
+  { href: "#habilidades", label: "Capacidades", id: "habilidades" },
+  { href: "#proyectos", label: "Proyectos", id: "proyectos" },
+  { href: "#proceso", label: "Proceso", id: "proceso" },
+];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('inicio');
+  const [activeSection, setActiveSection] = useState("inicio");
 
   useEffect(() => {
+    const sectionIds = [...navLinks.map((l) => l.id), "contacto"];
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 24);
 
-      const sections = ['inicio', 'habilidades', 'proyectos', 'contacto'];
-      for (const section of sections.reverse()) {
-        const element = document.getElementById(section);
-        if (element && window.scrollY >= element.offsetTop - 200) {
-          setActiveSection(section);
-          break;
+      let current = "inicio";
+      for (const id of sectionIds) {
+        const element = document.getElementById(id);
+        if (element && window.scrollY >= element.offsetTop - 240) {
+          current = id;
         }
       }
+      setActiveSection(current);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { href: '#inicio', label: 'Inicio', id: 'inicio' },
-    { href: '#habilidades', label: 'Skills', id: 'habilidades' },
-    { href: '#proyectos', label: 'Proyectos', id: 'proyectos' },
-  ];
-
   return (
-    <nav
-      role="navigation"
-      aria-label="Navegación principal"
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-cyan-500/20' : 'bg-transparent'
+    <header
+      className={`fixed top-0 inset-x-0 z-[300] transition-all duration-300 ${
+        scrolled
+          ? "bg-canvas/80 backdrop-blur-xl border-b border-line"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <a href="#inicio" className="text-3xl font-black bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-            FRANCO PAREDES
-          </a>
-
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.href}
-                className={`text-lg transition-colors font-semibold ${
-                  activeSection === link.id ? 'text-cyan-400' : 'hover:text-cyan-400'
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#contacto"
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all hover:scale-105"
-            >
-              TRABAJEMOS JUNTOS
-            </a>
-          </div>
-
-          <button
-            className="md:hidden text-cyan-400 p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X size={32} /> : <Menu size={32} />}
-          </button>
-        </div>
-      </div>
-
-      <div
-        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-          menuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
-        } bg-black/95 backdrop-blur-xl border-t border-cyan-500/20`}
+      <nav
+        role="navigation"
+        aria-label="Navegación principal"
+        className="container flex items-center justify-between h-16 md:h-20"
       >
-        <div className="px-6 py-6 space-y-4">
+        <a
+          href="#inicio"
+          className="inline-flex items-center gap-2 font-black text-lg tracking-tight text-content"
+        >
+          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-600 text-white">
+            <Code2 size={18} aria-hidden="true" />
+          </span>
+          Franco Paredes
+        </a>
+
+        <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <a
               key={link.id}
               href={link.href}
-              className={`block text-xl font-semibold transition-colors ${
-                activeSection === link.id ? 'text-cyan-400' : 'hover:text-cyan-400'
+              aria-current={activeSection === link.id ? "true" : undefined}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                activeSection === link.id
+                  ? "text-brand-500 bg-brand-500/10"
+                  : "text-content-muted hover:text-content"
               }`}
-              onClick={() => setMenuOpen(false)}
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="#contacto"
-            className="block text-center bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full font-bold"
-            onClick={() => setMenuOpen(false)}
+        </div>
+
+        <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
+          <Button
+            size="sm"
+            onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
           >
-            TRABAJEMOS JUNTOS
-          </a>
+            Contacto
+          </Button>
+        </div>
+
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
+          <button
+            className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-content"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
+            {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-out bg-canvas border-t border-line ${
+          menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 border-transparent"
+        }`}
+      >
+        <div className="container py-4 flex flex-col gap-1">
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                activeSection === link.id
+                  ? "text-brand-500 bg-brand-500/10"
+                  : "text-content-muted hover:text-content"
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <Button
+            fullWidth
+            className="mt-2"
+            onClick={() => {
+              setMenuOpen(false);
+              document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Contacto
+          </Button>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

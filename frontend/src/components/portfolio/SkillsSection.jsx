@@ -1,53 +1,63 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { skills } from '../../data/skills';
-import AnimatedSection from '../common/AnimatedSection';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { skillPillars } from "../../data/skills";
+import AnimatedSection from "../common/AnimatedSection";
 
 export default function SkillsSection() {
   return (
-    <section id="habilidades" className="relative py-24 px-4">
-      <AnimatedSection delay={200}>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-4">
-              MIS{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                SUPERPODERES
+    <section id="habilidades" className="section bg-surface">
+      <div className="container">
+        <AnimatedSection delay={0}>
+          <div className="max-w-2xl mb-14">
+            <p className="text-sm font-semibold uppercase tracking-widest text-brand-500 mb-3">
+              Capacidades
+            </p>
+            <h2 className="section-title">
+              Cubro todo el ciclo{" "}
+              <span className="bg-gradient-to-r from-brand-400 to-accent-500 bg-clip-text text-transparent">
+                del producto
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-400">Tecnologías con las que desarrollo soluciones profesionales</p>
+            <p className="section-subtitle">
+              No solo escribo código: modelo datos, diseño interfaces y llevo el deploy a
+              producción.
+            </p>
           </div>
+        </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-            {skills.map((skill, idx) => (
-              <div key={idx} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity will-change-transform"></div>
-                <div className="relative bg-gray-900/50 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 hover:border-cyan-500 transition-all h-full">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="text-4xl md:text-5xl mb-4" aria-hidden="true">
-                      <FontAwesomeIcon icon={skill.icon} />
-                    </div>
-                    <div>
-                      <h3 className="text-xl md:text-2xl font-bold">{skill.name}</h3>
-                      <div className="text-cyan-400 font-semibold text-base">{skill.level}%</div>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {skillPillars.map((pillar, idx) => (
+            <AnimatedSection key={pillar.id} delay={idx * 100}>
+              <article className="h-full rounded-2xl border border-line bg-canvas p-6 md:p-8 transition-colors duration-300 hover:border-brand-500">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-xl">
+                    <FontAwesomeIcon icon={pillar.icon} aria-hidden="true" />
                   </div>
-                  <div className="w-full bg-gray-800 rounded-full h-2 mt-4 overflow-hidden">
-                    <div
-                      className="h-full bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full transition-all duration-1000"
-                      style={{ width: `${skill.level}%` }}
-                      role="progressbar"
-                      aria-valuenow={skill.level}
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                      aria-label={`${skill.name}: ${skill.level}%`}
-                    ></div>
+                  <div>
+                    <h3 className="text-xl font-bold text-content">{pillar.title}</h3>
+                    <p className="text-sm text-content-muted mt-1 leading-relaxed">
+                      {pillar.description}
+                    </p>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+
+                <ul className="flex flex-wrap gap-2">
+                  {pillar.skills.map((skill) => (
+                    <li
+                      key={skill.name}
+                      className="inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-1.5 text-sm text-content"
+                    >
+                      <span className="text-brand-500" aria-hidden="true">
+                        <FontAwesomeIcon icon={skill.icon} />
+                      </span>
+                      {skill.name}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </AnimatedSection>
+          ))}
         </div>
-      </AnimatedSection>
+      </div>
     </section>
   );
 }

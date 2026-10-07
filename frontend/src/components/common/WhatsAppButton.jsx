@@ -1,10 +1,9 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const WhatsAppButton = () => {
-  const phoneNumber = '542915275183';
-  const message = 'Hola, vi tu portfolio y me gustaría contactarte.';
+  const phoneNumber = "542915275183";
+  const message = "Hola, vi tu portfolio y me gustaría contactarte.";
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (
@@ -12,9 +11,10 @@ const WhatsAppButton = () => {
       href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all"
+      aria-label="Escribime por WhatsApp"
+      className="fixed bottom-6 right-6 z-[300] flex items-center justify-center w-14 h-14 rounded-full bg-whatsapp-500 text-white shadow-lg transition-transform duration-200 hover:scale-110 hover:bg-whatsapp-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
     >
-      <FontAwesomeIcon icon={faWhatsapp} size="2x" />
+      <FontAwesomeIcon icon={faWhatsapp} size="xl" aria-hidden="true" />
     </a>
   );
 };
