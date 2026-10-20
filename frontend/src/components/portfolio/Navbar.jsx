@@ -58,7 +58,7 @@ export default function Navbar() {
             href="#inicio"
             className="inline-flex items-center gap-2 font-display font-black text-lg tracking-tight text-ink"
           >
-            <span className="flex items-center justify-center w-8 h-8 border-2 border-border bg-surface flex items-center justify-center" style={{ borderRadius: 'var(--radius-none)' }}>
+            <span className="flex items-center justify-center w-8 h-8 border-2 border-border bg-surface flex items-center justify-center">
               <Code2 size={18} className="text-primary" aria-hidden="true" />
             </span>
             Franco Paredes
@@ -100,7 +100,7 @@ export default function Navbar() {
               aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
-              style={{ borderRadius: 'var(--radius-none)' }}
+             
             >
               {menuOpen ? <X size={26} /> : <Menu size={26} />}
             </button>

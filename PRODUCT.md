@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-React 19 + Vite 6 + Tailwind CSS v4 + Flask. Frontend: componentes React con design system (CVA, tokens CSS, lucide-react icons). Backend: Flask sirve build de producción (`frontend/dist`) + endpoint `/api/contact` (POST JSON → log/email). Build step: `npm run build` en frontend, Flask sirve assets estáticos. Dev: Vite dev server (puerto 5173) con proxy `/api` → Flask (puerto 5000).
+React 19 + Vite 6 + Tailwind CSS v4. Frontend estático (SPA). Sin backend: el formulario de contacto abre el cliente de email del usuario (mailto). Build step: `npm run build` en frontend → `frontend/dist`. Dev: Vite dev server (puerto 5173). Deploy: GitHub Pages / Vercel estático.
 
 ## Users
 
@@ -39,13 +39,13 @@ Success = que un cliente potencial o reclutador entienda en <30s que Franco entr
 ## Capabilities and Constraints
 
 **Confirmado:**
-- Flask backend sirve build de React (`frontend/dist`) + endpoint `/api/contact` (POST JSON) + health check (`/health`).
+- Frontend estático React (Vite). Sin backend ni API. Formulario de contacto vía `mailto:`.
 - Frontend: React 19 + Vite 6 + Tailwind v4, design system con tokens CSS (`tokens.css`), componentes UI tipados (Button, Input, Textarea, Badge con CVA).
-- Build step: `npm run build` → `frontend/dist/` (servido por Flask).
+- Build step: `npm run build` → `frontend/dist/` (sitio estático).
 - Dark/light mode con CSS custom properties + `localStorage` + `useTheme` hook.
 - Fuentes: Geist + Geist Mono (variable fonts, Google Fonts).
 - Imágenes: WebP optimizado, lazy load nativo.
-- Deploy: Flask en VPS/container, nginx reverse proxy, HTTPS via Let's Encrypt.
+- Deploy: estático (GitHub Pages o Vercel).
 
 **Abierto / por decidir:**
 - ¿SSG para pre-renderizar páginas de proyecto? (Astro, Next.js export, o script propio)

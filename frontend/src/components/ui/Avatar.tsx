@@ -40,7 +40,7 @@ export function Avatar({
     <div className={cn("relative inline-block flex-shrink-0", className)} {...props}>
       <div
         className={cn(
-          "rounded-full overflow-hidden bg-surface-muted text-content-muted",
+          "rounded-full overflow-hidden bg-surface-muted text-ink-muted",
           "flex items-center justify-center font-semibold select-none",
           sizeClasses[size]
         )}

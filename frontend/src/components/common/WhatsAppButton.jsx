@@ -10,7 +10,7 @@ const WhatsAppButton = () => {
       rel="noopener noreferrer"
       aria-label="Escribime por WhatsApp"
       className="fixed bottom-6 right-6 z-[300] btn-brutal btn-primary w-14 h-14 p-0"
-      style={{ borderRadius: 'var(--radius-none)' }}
+     
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

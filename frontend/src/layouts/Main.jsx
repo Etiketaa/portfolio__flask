@@ -3,7 +3,7 @@ import ScrollToTop from "../components/common/scrollToTop/ScrollToTop";
 
 const Main = () => {
   return (
-    <div className="relative bg-canvas text-content min-h-screen">
+    <div className="relative bg-canvas text-ink min-h-screen">
       <Outlet />
       <ScrollToTop />
     </div>

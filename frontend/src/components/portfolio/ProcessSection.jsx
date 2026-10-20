@@ -62,7 +62,7 @@ export default function ProcessSection() {
                     <span className="font-display font-bold text-primary text-sm">{step.number}</span>
                     <span
                       className="flex-shrink-0 w-10 h-10 border-2 border-border bg-surface flex items-center justify-center"
-                      style={{ borderRadius: 'var(--radius-none)' }}
+                     
                       aria-hidden="true"
                     >
                       <Icon size={20} className="text-primary" />

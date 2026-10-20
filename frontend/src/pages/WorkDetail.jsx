@@ -47,10 +47,10 @@ export default function WorkDetail() {
         <p className="text-6xl mb-6" aria-hidden="true">
           🧭
         </p>
-        <h1 className="text-2xl md:text-3xl font-black text-content">
+        <h1 className="text-2xl md:text-3xl font-black text-ink">
           No encontramos ese proyecto
         </h1>
-        <p className="mt-2 text-content-muted max-w-md">
+        <p className="mt-2 text-ink-muted max-w-md">
           El enlace puede estar desactualizado o el proyecto fue renombrado.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -73,7 +73,7 @@ export default function WorkDetail() {
 
   return (
     <div className="min-h-screen bg-canvas">
-      <header className="sticky top-0 z-[300] bg-canvas/80 backdrop-blur-xl border-b border-line">
+      <header className="sticky top-0 z-[300] bg-canvas/80 backdrop-blur-xl border-b border-border">
         <nav
           role="navigation"
           aria-label="Navegación del proyecto"
@@ -81,7 +81,7 @@ export default function WorkDetail() {
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-content-muted hover:text-content transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-ink-muted hover:text-ink transition-colors"
           >
             <ArrowLeft size={18} aria-hidden="true" />
             Volver a proyectos
@@ -95,7 +95,7 @@ export default function WorkDetail() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
             <div className="lg:col-span-2">
               <div
-                className="relative rounded-3xl overflow-hidden border border-line bg-gradient-to-br from-brand-500/15 via-canvas to-accent-500/15 p-10 md:p-14 text-center"
+                className="relative rounded-3xl overflow-hidden border border-border bg-gradient-to-br from-brand-500/15 via-canvas to-accent-500/15 p-10 md:p-14 text-center"
                 aria-hidden="true"
               >
                 <span className="text-7xl md:text-8xl inline-block">{project.emoji}</span>
@@ -103,7 +103,7 @@ export default function WorkDetail() {
                   {project.categories.map((cat) => (
                     <span
                       key={cat}
-                      className="rounded-full bg-brand-500/10 border border-brand-500/30 px-3 py-1 text-xs font-semibold text-brand-600 dark:text-brand-400"
+                      className="rounded-full bg-brand-500/10 border border-brand-500/30 px-3 py-1 text-xs font-semibold text-primary-hover dark:text-primary"
                     >
                       {cat}
                     </span>
@@ -119,21 +119,21 @@ export default function WorkDetail() {
                     </Badge>
                   )}
                   {project.year && (
-                    <span className="text-sm font-medium text-content-subtle">{project.year}</span>
+                    <span className="text-sm font-medium text-ink-subtle">{project.year}</span>
                   )}
                   {project.role && (
-                    <span className="text-sm font-medium text-content-subtle">{project.role}</span>
+                    <span className="text-sm font-medium text-ink-subtle">{project.role}</span>
                   )}
                 </div>
 
-                <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-balance text-content">
+                <h1 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-balance text-ink">
                   {project.title}
                 </h1>
-                <p className="mt-3 text-lg md:text-xl text-content-muted leading-relaxed">
+                <p className="mt-3 text-lg md:text-xl text-ink-muted leading-relaxed">
                   {project.tagline}
                 </p>
 
-                <p className="mt-6 text-content-muted leading-relaxed">{project.summary}</p>
+                <p className="mt-6 text-ink-muted leading-relaxed">{project.summary}</p>
 
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
                   {project.links.deploy && (
@@ -162,17 +162,17 @@ export default function WorkDetail() {
             <aside className="lg:col-span-1 space-y-8">
               {project.metrics?.length > 0 && (
                 <div>
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-brand-500 mb-4">
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
                     Métricas
                   </h2>
                   <dl className="grid grid-cols-3 gap-3">
                     {project.metrics.map((metric) => (
                       <div
                         key={metric.label}
-                        className="rounded-2xl border border-line bg-surface p-4 text-center"
+                        className="rounded-2xl border border-border bg-surface p-4 text-center"
                       >
-                        <dd className="text-2xl font-black text-brand-500">{metric.value}</dd>
-                        <dt className="mt-1 text-xs text-content-muted leading-snug">
+                        <dd className="text-2xl font-black text-primary">{metric.value}</dd>
+                        <dt className="mt-1 text-xs text-ink-muted leading-snug">
                           {metric.label}
                         </dt>
                       </div>
@@ -182,21 +182,21 @@ export default function WorkDetail() {
               )}
 
               <div>
-                <h2 className="text-sm font-bold uppercase tracking-widest text-brand-500 mb-4">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
                   Stack técnico
                 </h2>
-                <div className="rounded-2xl border border-line bg-surface p-5 space-y-4">
+                <div className="rounded-2xl border border-border bg-surface p-5 space-y-4">
                   {Object.entries(project.stack || {}).map(([group, techs]) =>
                     techs.length > 0 ? (
                       <div key={group} className="flex flex-col gap-1.5">
-                        <span className="text-xs font-semibold text-content-subtle capitalize">
+                        <span className="text-xs font-semibold text-ink-subtle capitalize">
                           {group}
                         </span>
                         <div className="flex flex-wrap gap-1.5">
                           {techs.map((tech) => (
                             <span
                               key={tech}
-                              className="rounded-md bg-canvas border border-line px-2 py-1 text-xs font-medium text-content-muted"
+                              className="rounded-none bg-canvas border border-border px-2 py-1 text-xs font-medium text-ink-muted"
                             >
                               {tech}
                             </span>
@@ -216,18 +216,18 @@ export default function WorkDetail() {
                 <section key={section.key} aria-labelledby={`${section.key}-title`}>
                   <h2
                     id={`${section.key}-title`}
-                    className="text-lg md:text-xl font-bold text-content"
+                    className="text-lg md:text-xl font-bold text-ink"
                   >
                     {section.label}
                   </h2>
                   <div className="mt-3 h-px bg-line" />
-                  <p className="mt-5 text-content-muted leading-relaxed">{section.body}</p>
+                  <p className="mt-5 text-ink-muted leading-relaxed">{section.body}</p>
                 </section>
               ))}
 
               {project.highlights?.length > 0 && (
                 <section aria-labelledby="highlights-title">
-                  <h2 id="highlights-title" className="text-lg md:text-xl font-bold text-content">
+                  <h2 id="highlights-title" className="text-lg md:text-xl font-bold text-ink">
                     Puntos destacados
                   </h2>
                   <div className="mt-3 h-px bg-line" />
@@ -235,7 +235,7 @@ export default function WorkDetail() {
                     {project.highlights.map((highlight) => (
                       <li
                         key={highlight}
-                        className="flex items-start gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-content-muted"
+                        className="flex items-start gap-3 rounded-none border border-border bg-surface p-4 text-sm text-ink-muted"
                       >
                         <CheckCircle2
                           size={18}
@@ -253,19 +253,19 @@ export default function WorkDetail() {
             <aside className="lg:col-span-1">
               <div className="lg:sticky lg:top-24 space-y-8">
                 <div>
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-brand-500 mb-4">
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
                     Arquitectura
                   </h2>
-                  <div className="rounded-2xl border border-line bg-surface p-5 space-y-3">
+                  <div className="rounded-2xl border border-border bg-surface p-5 space-y-3">
                     {project.architecture?.map((item) => (
                       <div
                         key={`${item.layer}-${item.tech}`}
                         className="flex items-start justify-between gap-3"
                       >
-                        <span className="text-sm font-semibold text-content flex-shrink-0">
+                        <span className="text-sm font-semibold text-ink flex-shrink-0">
                           {item.layer}
                         </span>
-                        <span className="text-sm text-content-muted text-right">{item.tech}</span>
+                        <span className="text-sm text-ink-muted text-right">{item.tech}</span>
                       </div>
                     ))}
                   </div>
@@ -282,12 +282,12 @@ export default function WorkDetail() {
           {neighbors.prev && (
             <Link
               to={`/work/${neighbors.prev.slug}`}
-              className="group rounded-2xl border border-line bg-surface p-6 hover:border-brand-500 transition-colors"
+              className="group rounded-2xl border border-border bg-surface p-6 hover:border-brand-500 transition-colors"
             >
-              <span className="flex items-center gap-1 text-xs font-semibold text-content-subtle">
+              <span className="flex items-center gap-1 text-xs font-semibold text-ink-subtle">
                 <ArrowLeft size={14} aria-hidden="true" /> Anterior
               </span>
-              <span className="mt-2 block font-bold text-content group-hover:text-brand-500 transition-colors">
+              <span className="mt-2 block font-bold text-ink group-hover:text-primary transition-colors">
                 {neighbors.prev.emoji} {neighbors.prev.title}
               </span>
             </Link>
@@ -295,12 +295,12 @@ export default function WorkDetail() {
           {neighbors.next && (
             <Link
               to={`/work/${neighbors.next.slug}`}
-              className="group rounded-2xl border border-line bg-surface p-6 text-right hover:border-brand-500 transition-colors sm:col-start-2"
+              className="group rounded-2xl border border-border bg-surface p-6 text-right hover:border-brand-500 transition-colors sm:col-start-2"
             >
-              <span className="flex items-center justify-end gap-1 text-xs font-semibold text-content-subtle">
+              <span className="flex items-center justify-end gap-1 text-xs font-semibold text-ink-subtle">
                 Siguiente <ArrowRight size={14} aria-hidden="true" />
               </span>
-              <span className="mt-2 block font-bold text-content group-hover:text-brand-500 transition-colors">
+              <span className="mt-2 block font-bold text-ink group-hover:text-primary transition-colors">
                 {neighbors.next.emoji} {neighbors.next.title}
               </span>
             </Link>

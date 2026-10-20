@@ -55,7 +55,7 @@ export default function WhyWorkWithMe() {
                 <Card variant="default" padding="lg" className="h-full">
                   <span
                     className="flex items-center justify-center w-12 h-12 border-2 border-border bg-surface mb-5"
-                    style={{ borderRadius: 'var(--radius-none)' }}
+                   
                   >
                     <Icon size={22} className="text-primary" aria-hidden="true" />
                   </span>

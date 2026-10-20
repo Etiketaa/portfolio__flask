@@ -19,7 +19,7 @@ export default function SkillsSection() {
             <AnimatedSection key={pillar.id} delay={idx * 100}>
               <Card variant="default" padding="lg" className="h-full">
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 border-2 border-border bg-surface flex items-center justify-center" style={{ borderRadius: 'var(--radius-none)' }}>
+                  <div className="flex-shrink-0 w-12 h-12 border-2 border-border bg-surface flex items-center justify-center">
                     <pillar.icon className="text-primary" aria-hidden="true" />
                   </div>
                   <div>

@@ -72,7 +72,7 @@ export default function ContactSection() {
     return !newErrors.name && !newErrors.email && !newErrors.message;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateAll()) return;
 
@@ -80,29 +80,20 @@ export default function ContactSection() {
     setSubmitError("");
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        if (data.errors) {
-          setErrors(data.errors);
-          setTouched({ name: true, email: true, message: true });
-        }
-        throw new Error(data.error || "Error al enviar el mensaje");
-      }
+      const subject = encodeURIComponent(`Contacto portfolio — ${form.name.trim()}`);
+      const body = encodeURIComponent(
+        `Nombre: ${form.name.trim()}\nEmail: ${form.email.trim()}\n\n${form.message.trim()}`
+      );
+      const mailto = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+      window.open(mailto, "_blank", "noopener,noreferrer");
 
       setIsSubmitted(true);
       setForm({ name: "", email: "", message: "" });
       setErrors({ name: "", email: "", message: "" });
       setTouched({ name: false, email: false, message: false });
       setTimeout(() => setIsSubmitted(false), 6000);
-    } catch (err) {
-      setSubmitError(err.message || "No se pudo enviar. Probá de nuevo o escribime directo por email.");
+    } catch {
+      setSubmitError("No se pudo abrir el cliente de email. Escribime directo a " + EMAIL + ".");
     } finally {
       setIsSubmitting(false);
     }
@@ -129,9 +120,9 @@ export default function ContactSection() {
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="flex items-center gap-3 border-2 border-border bg-surface p-4 text-ink-muted hover:text-ink hover:border-primary brutalist-interactive"
-                    style={{ borderRadius: 'var(--radius-none)' }}
+                   
                   >
-                    <span className="flex-shrink-0 w-10 h-10 border border-border bg-surface-muted flex items-center justify-center" style={{ borderRadius: 'var(--radius-none)' }}>
+                    <span className="flex-shrink-0 w-10 h-10 border border-border bg-surface-muted flex items-center justify-center">
                       <Icon size={18} aria-hidden="true" className="text-primary" />
                     </span>
                     <span className="font-display font-medium text-sm">{link.label}</span>
@@ -145,18 +136,18 @@ export default function ContactSection() {
             <Card variant="default" padding="lg">
               {isSubmitted ? (
                 <div className="flex flex-col items-center text-center gap-4 py-12">
-                  <span className="flex items-center justify-center w-16 h-16 border-2 border-primary bg-surface flex items-center justify-center" style={{ borderRadius: 'var(--radius-none)' }}>
+                  <span className="flex items-center justify-center w-16 h-16 border-2 border-primary bg-surface flex items-center justify-center">
                     <CheckCircle2 size={36} aria-hidden="true" className="text-primary" />
                   </span>
                   <h3 className="font-display font-bold text-ink text-xl">¡Todo listo!</h3>
                   <p className="font-body text-sm text-ink-muted max-w-xs">
-                    Mensaje enviado correctamente. Te respondo a la brevedad.
+                    Se abrió tu cliente de email con el mensaje listo. Si no se abrió, escribime directo.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                   {submitError && (
-                    <div className="border-2 border-error bg-surface p-3 text-error text-sm flex items-center gap-2" role="alert" style={{ borderRadius: 'var(--radius-none)' }}>
+                    <div className="border-2 border-error bg-surface p-3 text-error text-sm flex items-center gap-2" role="alert">
                       <AlertCircle size={18} aria-hidden="true" flex-shrink={0} />
                       <span>{submitError}</span>
                     </div>

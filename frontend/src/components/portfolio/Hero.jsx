@@ -25,11 +25,12 @@ export default function Hero() {
                 </Badge>
               </div>
 
-              <h1 className="font-display font-black text-ink text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-balance">
+              <h1 className="font-display font-black text-ink text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-balance">
                 <Typewriter
                   text="Construyo productos digitales"
                   speed={25}
                   startDelay={300}
+                  prompt="user@portfolio:~$ "
                   className="block"
                 />
                 <Typewriter
@@ -117,7 +118,7 @@ export default function Hero() {
                   height={420}
                   fetchPriority="high"
                   className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-[420px] lg:h-[420px] object-cover border-4 border-border shadow-xl"
-                  style={{ borderRadius: 'var(--radius-none)' }}
+                 
                 />
               </div>
             </AnimatedSection>
@@ -136,7 +137,7 @@ function SocialLink({ href, label, children }) {
       rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
       aria-label={label}
       className="p-2 text-ink-muted hover:text-primary hover:bg-surface-muted transition-colors duration-100 brutalist-interactive"
-      style={{ borderRadius: 'var(--radius-none)' }}
+     
     >
       {children}
     </a>

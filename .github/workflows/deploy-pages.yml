@@ -32,6 +32,8 @@ jobs:
         run: cd frontend && npm ci
 
       - name: Build
+        env:
+          VITE_REPO_NAME: ${{ github.event.repository.name }}
         run: cd frontend && npm run build
 
       - name: Upload artifact

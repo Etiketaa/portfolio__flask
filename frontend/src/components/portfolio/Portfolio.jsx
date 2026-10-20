@@ -10,7 +10,7 @@ import WhatsAppButton from "../common/WhatsAppButton";
 
 export default function Portfolio() {
   return (
-    <div className="bg-canvas text-content min-h-screen overflow-x-hidden">
+    <div className="bg-canvas text-ink min-h-screen overflow-x-hidden">
       <Navbar />
       <main id="main-content" className="pb-20">
         <Hero />

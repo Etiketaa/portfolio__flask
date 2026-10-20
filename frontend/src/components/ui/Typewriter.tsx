@@ -1,32 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useMediaQuery } from 'react-responsive';
 
 interface TypewriterProps {
   text: string;
   className?: string;
-  speed?: number;        // ms por caracter
-  startDelay?: number;   // ms antes de empezar
-  cursor?: boolean;      // mostrar cursor parpadeante
-  prompt?: string;       // prompt estilo bash (ej: "user@portfolio:~$ ")
+  speed?: number;
+  startDelay?: number;
+  cursor?: boolean;
+  prompt?: string;
   onComplete?: () => void;
 }
 
-const Typewriter = ({ 
-  text, 
-  className = "", 
-  speed = 30, 
-  startDelay = 200, 
+const Typewriter = ({
+  text,
+  className = "",
+  speed = 30,
+  startDelay = 200,
   cursor = true,
   prompt = "",
-  onComplete 
+  onComplete,
 }: TypewriterProps) => {
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showCursor, setShowCursor] = useState(cursor);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const prefersReducedMotion = useMediaQuery({ query: '(prefers-reduced-motion: reduce)' });
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -35,7 +35,7 @@ const Typewriter = ({
       return;
     }
 
-    if (inView && !isTyping) {
+    if (inView && !isTyping && displayText === "") {
       setIsTyping(true);
       timeoutRef.current = setTimeout(() => {
         let i = 0;
@@ -43,15 +43,10 @@ const Typewriter = ({
           if (i <= text.length) {
             setDisplayText(text.slice(0, i));
             i++;
-            timeoutRef.current = setTimeout(type, speed + Math.random() * 20); // variación humana
+            timeoutRef.current = setTimeout(type, speed + Math.random() * 20);
           } else {
             setIsTyping(false);
             if (onComplete) onComplete();
-            // Parpadeo del cursor al final
-            if (cursor) {
-              const blink = setInterval(() => setShowCursor(prev => !prev), 530);
-              return () => clearInterval(blink);
-            }
           }
         };
         type();
@@ -63,12 +58,28 @@ const Typewriter = ({
     };
   }, [inView, prefersReducedMotion, text, speed, startDelay, cursor, onComplete]);
 
+  // Parpadeo del cursor al terminar (sin cambiar el ancho del texto)
+  useEffect(() => {
+    if (prefersReducedMotion || !cursor || isTyping || displayText !== text) return;
+    const blink = setInterval(() => setShowCursor((prev) => !prev), 530);
+    return () => clearInterval(blink);
+  }, [prefersReducedMotion, cursor, isTyping, displayText, text]);
+
+  const cursorVisible = prefersReducedMotion ? true : (isTyping ? true : showCursor);
+
   return (
     <span ref={ref} className={`font-display ${className}`}>
       {prompt && <span className="text-primary mr-2 font-body">{prompt}</span>}
       <span className="text-ink">{displayText}</span>
-      {cursor && isTyping && <span className="text-primary animate-pulse-soft ml-1 font-body">_</span>}
-      {cursor && !isTyping && displayText === text && showCursor && <span className="text-primary ml-1 font-body">_</span>}
+      {cursor && (
+        <span
+          className="text-primary ml-1 font-body"
+          style={{ opacity: cursorVisible ? 1 : 0, transition: 'opacity 100ms linear' }}
+          aria-hidden="true"
+        >
+          _
+        </span>
+      )}
     </span>
   );
 };

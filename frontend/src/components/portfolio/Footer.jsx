@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-2">
             <a href="#inicio" className="inline-flex items-center gap-2 font-display font-black text-lg text-ink">
-              <span className="flex items-center justify-center w-8 h-8 border-2 border-border bg-surface flex items-center justify-center" style={{ borderRadius: 'var(--radius-none)' }}>
+              <span className="flex items-center justify-center w-8 h-8 border-2 border-border bg-surface flex items-center justify-center">
                 <Code2 size={18} className="text-primary" aria-hidden="true" />
               </span>
               Franco Paredes
