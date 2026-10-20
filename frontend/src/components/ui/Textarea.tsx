@@ -16,43 +16,45 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {label && (
           <label
             htmlFor={textareaId}
-            className="block text-sm font-medium text-content mb-2"
+            className="label-brutal"
           >
             {label}
             {props.required && (
-              <span className="text-error-500 ml-1" aria-hidden="true">
+              <span className="text-error ml-1" aria-hidden="true">
                 *
               </span>
             )}
           </label>
         )}
-        <textarea
-          ref={ref}
-          id={textareaId}
-          rows={rows}
-          className={cn(
-            "w-full rounded-xl border bg-canvas px-4 py-3 text-content placeholder:text-content-subtle",
-            "transition-colors duration-200 resize-y",
-            "focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent",
-            "disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-surface-muted",
-            error
-              ? "border-error-500 focus:ring-error-500"
-              : "border-line hover:border-line-strong focus:border-brand-500",
-            className
-          )}
-          aria-invalid={!!error}
-          aria-describedby={
-            error ? `${textareaId}-error` : hint ? `${textareaId}-hint` : undefined
-          }
-          {...props}
-        />
+        <div className="relative">
+          <textarea
+            ref={ref}
+            id={textareaId}
+            rows={rows}
+            className={cn(
+              "textarea-brutal",
+              error && "error",
+              className
+            )}
+            aria-invalid={!!error}
+            aria-describedby={
+              error ? `${textareaId}-error` : hint ? `${textareaId}-hint` : undefined
+            }
+            {...props}
+          />
+        </div>
         {error && (
-          <p id={`${textareaId}-error`} className="mt-2 text-sm text-error-500" role="alert">
+          <p id={`${textareaId}-error`} className="error-message" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
             {error}
           </p>
         )}
         {hint && !error && (
-          <p id={`${textareaId}-hint`} className="mt-2 text-sm text-content-subtle">
+          <p id={`${textareaId}-hint`} className="mt-2 font-body text-xs text-ink-muted">
             {hint}
           </p>
         )}

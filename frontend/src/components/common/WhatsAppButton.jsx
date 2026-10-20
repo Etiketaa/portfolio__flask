@@ -1,6 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-
 const WhatsAppButton = () => {
   const phoneNumber = "542915275183";
   const message = "Hola, vi tu portfolio y me gustaría contactarte.";
@@ -12,9 +9,19 @@ const WhatsAppButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribime por WhatsApp"
-      className="fixed bottom-6 right-6 z-[300] flex items-center justify-center w-14 h-14 rounded-full bg-whatsapp-500 text-white shadow-lg transition-transform duration-200 hover:scale-110 hover:bg-whatsapp-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      className="fixed bottom-6 right-6 z-[300] btn-brutal btn-primary w-14 h-14 p-0"
+      style={{ borderRadius: 'var(--radius-none)' }}
     >
-      <FontAwesomeIcon icon={faWhatsapp} size="xl" aria-hidden="true" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.454.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378 9.86 9.86 0 01-.474-.143c-.247-.079-.418-.176-.572-.315-.168-.15-.294-.336-.312-.558-.017-.212-.01-.42.035-.616.073-.324.325-.88.71-1.527.336-.56.715-1.044 1.145-1.436.53-.486 1.146-.863 1.777-1.12.713-.29 1.434-.47 2.203-.47.779 0 1.495.18 2.177.47.682.257 1.298.634 1.828 1.12.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+      </svg>
     </a>
   );
 };

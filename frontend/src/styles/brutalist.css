@@ -1,0 +1,296 @@
+/* ============================================================
+   BRUTALIST UTILITIES — Neo-Brutalist Golf Pastel
+   Importar en index.css después de tokens.css
+   ============================================================ */
+
+@layer utilities {
+  /* ---- INTERACTIVE BASE (Solo color/background transicionan) ---- */
+  .brutalist-interactive {
+    transition: background-color 100ms var(--ease-out),
+                color 100ms var(--ease-out),
+                border-color 100ms var(--ease-out);
+    /* NO transition en transform, box-shadow, outline */
+  }
+
+  /* ---- BOTONES ---- */
+  .btn-brutal {
+    @apply brutalist-interactive;
+    border: var(--border-thick);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    min-height: 48px; /* Touch target */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+
+  .btn-primary {
+    @apply btn-brutal;
+    background: var(--color-primary);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .btn-primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-press);
+  }
+  .btn-primary:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
+
+  .btn-secondary {
+    @apply btn-brutal;
+    background: transparent;
+    color: var(--color-ink);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-secondary:hover {
+    background: var(--color-ink);
+    color: var(--color-canvas);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .btn-secondary:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-press);
+  }
+  .btn-secondary:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .btn-ghost {
+    @apply btn-brutal;
+    background: transparent;
+    color: var(--color-ink);
+    border: var(--border-med);
+    box-shadow: none;
+  }
+  .btn-ghost:hover {
+    background: var(--color-surface-muted);
+    transform: translate(-1px, -1px);
+  }
+  .btn-ghost:active {
+    transform: translate(1px, 1px);
+  }
+
+  /* ---- TARJETAS ---- */
+  .card-brutal {
+    background: var(--color-surface);
+    border: var(--border-thick);
+    box-shadow: var(--shadow-md);
+    @apply brutalist-interactive;
+  }
+  .card-brutal:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .card-brutal:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-press);
+  }
+
+  .card-project {
+    @apply card-brutal p-5;
+    transform: rotate(var(--rot, 0deg));
+    transition: transform 150ms var(--ease-out); /* Solo rotate en hover */
+  }
+  .card-project:hover {
+    transform: rotate(0deg) translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .card-project:nth-child(odd) { --rot: -1deg; }
+  .card-project:nth-child(even) { --rot: 1deg; }
+
+  /* ---- BADGES / TAGS ---- */
+  .badge-brutal {
+    display: inline-flex;
+    align-items: center;
+    background: var(--color-accent);
+    color: var(--color-ink);
+    border: var(--border-med);
+    border-radius: var(--radius-pill);
+    padding: var(--space-1) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .badge-primary { background: var(--color-primary); }
+  .badge-warning { background: var(--color-warning); }
+  .badge-error { background: var(--color-error); color: var(--color-canvas); }
+  .badge-success { background: var(--color-success); }
+
+  /* ---- INPUTS / TEXTAREA ---- */
+  .input-brutal,
+  .textarea-brutal {
+    @apply brutalist-interactive;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    border: var(--border-thick);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    width: 100%;
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-none);
+  }
+  .input-brutal:focus,
+  .textarea-brutal:focus {
+    outline: none;
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+  }
+  .input-brutal::placeholder,
+  .textarea-brutal::placeholder {
+    color: var(--color-ink-muted);
+  }
+  .input-brutal:disabled,
+  .textarea-brutal:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .input-brutal.error,
+  .textarea-brutal.error {
+    border-color: var(--color-error);
+  }
+  .input-brutal.error:focus,
+  .textarea-brutal.error:focus {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-error);
+  }
+
+  .label-brutal {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-ink);
+    margin-bottom: var(--space-2);
+  }
+
+  .error-message {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: var(--color-error);
+    margin-top: var(--space-1);
+  }
+
+  /* ---- SECTIONS ---- */
+  .section-brutal {
+    padding-block: var(--space-10);
+    @media (min-width: 768px) { padding-block: var(--space-12); }
+    @media (min-width: 1024px) { padding-block: var(--space-16); }
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+    @media (min-width: 768px) { font-size: var(--text-4xl); }
+    @media (min-width: 1024px) { font-size: var(--text-5xl); }
+  }
+
+  .section-subtitle {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-ink-muted);
+    max-width: 42rem;
+    margin-top: var(--space-4);
+    @media (min-width: 768px) { font-size: var(--text-lg); }
+  }
+
+  .section-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  /* ---- SKIP LINK ---- */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-4);
+    z-index: 1000;
+    background: var(--color-primary);
+    color: var(--color-ink);
+    border: var(--border-thick);
+    padding: var(--space-2) var(--space-4);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    border-radius: var(--radius-none);
+    box-shadow: var(--shadow-md);
+    transition: top 100ms var(--ease-out);
+  }
+  .skip-link:focus {
+    top: var(--space-4);
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* ---- FOCUS VISIBLE GLOBAL ---- */
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* ---- ROTACIÓN ALEATORIA (aplicar via style attribute) ---- */
+  .rotated-odd { --rot: -1deg; }
+  .rotated-even { --rot: 1deg; }
+
+  /* ---- DIVIDERS ---- */
+  .divider-brutal {
+    border-top: var(--border-hair);
+    margin-block: var(--space-6);
+  }
+  .divider-thick {
+    border-top: var(--border-med);
+    margin-block: var(--space-8);
+  }
+
+  /* ---- SCROLL PROGRESS BAR ---- */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transform-origin: left;
+    transform: scaleX(0);
+    z-index: 1000;
+    transition: transform 100ms var(--ease-brand);
+    will-change: transform;
+  }
+}

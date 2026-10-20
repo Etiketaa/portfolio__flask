@@ -1,5 +1,6 @@
 import { Search, PenTool, Database, Rocket, LineChart } from "lucide-react";
 import AnimatedSection from "../common/AnimatedSection";
+import { Card, SectionTitle } from "../ui";
 
 const steps = [
   {
@@ -41,23 +42,14 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section id="proceso" className="section bg-surface">
+    <section id="proceso" className="section-brutal bg-surface-muted">
       <div className="container">
         <AnimatedSection delay={0}>
-          <div className="max-w-2xl mb-14">
-            <p className="text-sm font-semibold uppercase tracking-widest text-brand-500 mb-3">
-              Cómo trabajo
-            </p>
-            <h2 className="section-title">
-              Un proceso{" "}
-              <span className="bg-gradient-to-r from-brand-400 to-accent-500 bg-clip-text text-transparent">
-                probado
-              </span>
-            </h2>
-            <p className="section-subtitle">
-              Cinco etapas que aplico en cada proyecto, del problema al producto funcionando.
-            </p>
-          </div>
+          <SectionTitle
+            label="Cómo trabajo"
+            title="Un proceso probado"
+            subtitle="Cinco etapas que aplico en cada proyecto, del problema al producto funcionando."
+          />
         </AnimatedSection>
 
         <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -65,29 +57,26 @@ export default function ProcessSection() {
             const Icon = step.icon;
             return (
               <AnimatedSection key={step.number} delay={idx * 80}>
-                <li className="relative h-full">
-                  <div className="flex flex-col h-full">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="font-mono text-sm font-bold text-brand-500">
-                        {step.number}
-                      </span>
-                      <span
-                        className="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center"
-                        aria-hidden="true"
-                      >
-                        <Icon size={20} />
-                      </span>
-                    </div>
-                    <h3 className="text-base font-bold text-content mb-2">{step.title}</h3>
-                    <p className="text-sm text-content-muted leading-relaxed">{step.description}</p>
-                    {idx < steps.length - 1 && (
-                      <span
-                        className="hidden lg:block absolute top-5 -right-3 w-3 h-3 border-t-2 border-r-2 border-line-strong rotate-45"
-                        aria-hidden="true"
-                      />
-                    )}
+                <Card variant="default" padding="md" className="h-full flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="font-display font-bold text-primary text-sm">{step.number}</span>
+                    <span
+                      className="flex-shrink-0 w-10 h-10 border-2 border-border bg-surface flex items-center justify-center"
+                      style={{ borderRadius: 'var(--radius-none)' }}
+                      aria-hidden="true"
+                    >
+                      <Icon size={20} className="text-primary" />
+                    </span>
                   </div>
-                </li>
+                  <h3 className="font-display font-bold text-ink text-base mb-2">{step.title}</h3>
+                  <p className="font-body text-sm text-ink-muted leading-relaxed flex-1">{step.description}</p>
+                  {idx < steps.length - 1 && (
+                    <span
+                      className="hidden lg:block absolute top-5 -right-3 w-3 h-3 border-t-2 border-r-2 border-border rotate-45"
+                      aria-hidden="true"
+                    />
+                  )}
+                </Card>
               </AnimatedSection>
             );
           })}

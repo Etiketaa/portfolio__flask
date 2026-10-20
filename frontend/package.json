@@ -12,17 +12,14 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^6.7.2",
-        "@fortawesome/free-brands-svg-icons": "^6.7.2",
-        "@fortawesome/free-solid-svg-icons": "^6.7.2",
-        "@fortawesome/react-fontawesome": "^0.2.2",
-        "@tailwindcss/vite": "^4.0.14",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "lucide-react": "^0.561.0",
+        "@tailwindcss/vite": "^4.0.14",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-intersection-observer": "^10.0.0",
+        "react-responsive": "^10.0.1",
         "react-router-dom": "^7.3.0",
         "tailwind-merge": "^3.7.0",
         "tailwindcss": "^4.0.14"
@@ -36,6 +33,7 @@
         "eslint-plugin-react-hooks": "^5.1.0",
         "eslint-plugin-react-refresh": "^0.4.19",
         "globals": "^15.15.0",
+        "gh-pages": "^6.3.0",
         "typescript": "^5.7.3",
         "vite": "^6.2.0"
     }

@@ -12,6 +12,8 @@ export { Input } from "./Input";
 export { Textarea } from "./Textarea";
 export { Badge, badgeVariants } from "./Badge";
 export type { BadgeProps } from "./Badge";
+export { Typewriter } from "./Typewriter";
+export { SectionTitle } from "../portfolio/SectionTitle";
 export { Avatar } from "./Avatar";
 export { Separator } from "./Separator";
 export {

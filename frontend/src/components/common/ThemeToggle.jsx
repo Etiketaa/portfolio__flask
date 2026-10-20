@@ -9,7 +9,8 @@ export default function ThemeToggle({ className = "" }) {
       type="button"
       onClick={toggleTheme}
       aria-label={theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro"}
-      className={`inline-flex items-center justify-center w-10 h-10 rounded-xl border border-line text-content-muted hover:text-content hover:border-brand-500 transition-colors duration-200 ${className}`}
+      className={`btn-brutal btn-ghost w-10 h-10 p-0 ${className}`}
+      style={{ borderRadius: 'var(--radius-none)' }}
     >
       {mounted ? (
         theme === "dark" ? (
